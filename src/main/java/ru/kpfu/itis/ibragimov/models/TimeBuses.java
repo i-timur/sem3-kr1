@@ -1,12 +1,12 @@
 package ru.kpfu.itis.ibragimov.models;
 
 public class TimeBuses {
-  private String updated_at;
-  private Bus[] buses;
+  public String updated_at;
+  public Data data;
 
-  public TimeBuses(String updated_at, Bus[] buses) {
+  public TimeBuses(String updated_at, Data data) {
     this.updated_at = updated_at;
-    this.buses = buses;
+    this.data = data;
   }
 
   public String getUpdated_at() {
@@ -17,11 +17,11 @@ public class TimeBuses {
     this.updated_at = updated_at;
   }
 
-  public Bus[] getBuses() {
-    return buses;
+  public Data getData() {
+    return data;
   }
 
-  public void setBuses(Bus[] buses) {
-    this.buses = buses;
+  public void setData(Data data) {
+    this.data = data;
   }
 }

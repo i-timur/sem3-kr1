@@ -10,24 +10,25 @@
 </head>
 <body>
 <form action="">
-    <input type="text" name="text" placeholder="Garage number">
+    <input id="input" type="text" name="text" placeholder="Marsh number">
     <button id="button">Get location</button>
 </form>
-<div>
-    Latitude:
+<div id="content">
+
 </div>
-<div id="latitude"></div>
-<div>
-    Longitude:
-</div>
-<div id="longitude"></div>
+
 <script>
     $(document).on('click', '#button', (e) => {
         e.preventDefault();
-        $.get("/bus", (resp) => {
-            $('#latitude').text(resp.split(" ")[0]);
-            $('#longitude').text(resp.split(" ")[1]);
+        $.get('/bus', {text: $('#input').val()}, (resp) => {
+            const buses = resp.split(' ');
+            buses.forEach(bus => {
+                const busInfo = bus.split('-');
+                $('#content').html(' ');
+                $('#content').append(`<div>Garage number: ${busInfo[0]}</div><div>Latitude: ${busInfo[1]}</div><div>Longitude: ${busInfo[2]}</div>`);
+            })
         });
+        $('#input').val('');
     });
 </script>
 </body>
