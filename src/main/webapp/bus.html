@@ -22,9 +22,12 @@
 </div>
 <div id="longitude"></div>
 <script>
-    $(document).on('click', '#button', (resp) => {
-        $('#latitude').text(resp.split(" ")[0]);
-        $('#longitude').text(resp.split(" ")[1]);
+    $(document).on('click', '#button', (e) => {
+        e.preventDefault();
+        $.get("/bus", (resp) => {
+            $('#latitude').text(resp.split(" ")[0]);
+            $('#longitude').text(resp.split(" ")[1]);
+        });
     });
 </script>
 </body>
